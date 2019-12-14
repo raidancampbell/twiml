@@ -87,7 +87,7 @@ func (r *Response) Encode() ([]byte, error) {
 
 	var buf = new(bytes.Buffer)
 
-	if err := r.Validate(); err != nil {
+	if err := r.Validate(); err != nil && !r.IgnoreValidationErrors {
 		return buf.Bytes(), err
 	}
 
